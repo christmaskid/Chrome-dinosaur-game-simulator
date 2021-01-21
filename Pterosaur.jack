@@ -1,0 +1,43 @@
+class Pterosaur
+{
+	static int memAddress;
+	function void draw(int location){
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 8192);
+		do Memory.poke(memAddress+32, 24576);
+		do Memory.poke(memAddress+64, -8192);
+		do Memory.poke(memAddress+96, -8192);
+		do Memory.poke(memAddress+128, -16384);
+		do Memory.poke(memAddress+160, -16384);
+		do Memory.poke(memAddress+192, -16000);
+		do Memory.poke(memAddress+224, -15936);
+		do Memory.poke(memAddress+256, -15392);
+		do Memory.poke(memAddress+288, -15376);
+		do Memory.poke(memAddress+320, -8);
+		do Memory.poke(memAddress+352, -512);
+		do Memory.poke(memAddress+384, -1024);
+		do Memory.poke(memAddress+416, -2048);
+		do Memory.poke(memAddress+448, -4096);
+		do Memory.poke(memAddress+480, -8192);
+
+		do Memory.poke(memAddress+1, 0);
+		do Memory.poke(memAddress+33, 0);
+		do Memory.poke(memAddress+65, 0);
+		do Memory.poke(memAddress+97, 1);
+		do Memory.poke(memAddress+129, 3);
+		do Memory.poke(memAddress+161, 7);
+		do Memory.poke(memAddress+193, 15);
+		do Memory.poke(memAddress+225, 31);
+		do Memory.poke(memAddress+257, 63);
+		do Memory.poke(memAddress+289, 127);
+		do Memory.poke(memAddress+321, 63);
+		do Memory.poke(memAddress+353, 127);
+		do Memory.poke(memAddress+385, 8191);
+		do Memory.poke(memAddress+417, 255);
+		do Memory.poke(memAddress+449, 4095);
+		do Memory.poke(memAddress+481, 511);
+
+		return;
+	}
+
+}

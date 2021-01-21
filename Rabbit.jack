@@ -1,0 +1,218 @@
+class Rabbit
+{
+	static int memAddress;
+	function void draw(int location){
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress+32, 0);
+		do Memory.poke(memAddress+64, 0);
+		do Memory.poke(memAddress+96, 0);
+		do Memory.poke(memAddress+128, 0);
+		do Memory.poke(memAddress+160, 0);
+		do Memory.poke(memAddress+192, 0);
+		do Memory.poke(memAddress+224, 0);
+		do Memory.poke(memAddress+256, 32256);
+		do Memory.poke(memAddress+288, -256);
+		do Memory.poke(memAddress+320, -128);
+		do Memory.poke(memAddress+352, -16000);
+		do Memory.poke(memAddress+384, -16000);
+		do Memory.poke(memAddress+416, -16512);
+		do Memory.poke(memAddress+448, 32704);
+		do Memory.poke(memAddress+480, -7968);
+
+		do Memory.poke(memAddress+512, -16160);
+		do Memory.poke(memAddress+544, 448);
+		do Memory.poke(memAddress+576, -64);
+		do Memory.poke(memAddress+608, -128);
+		do Memory.poke(memAddress+640, -16896);
+		do Memory.poke(memAddress+672, -16384);
+		do Memory.poke(memAddress+704, 0);
+		do Memory.poke(memAddress+736, -8192);
+		do Memory.poke(memAddress+768, -4096);
+		do Memory.poke(memAddress+800, -2048);
+		do Memory.poke(memAddress+832, -1024);
+		do Memory.poke(memAddress+864, -1024);
+		do Memory.poke(memAddress+896, -512);
+		do Memory.poke(memAddress+928, -512);
+		do Memory.poke(memAddress+960, -128);
+		do Memory.poke(memAddress+992, -128);
+
+		do Memory.poke(memAddress+1024, -128);
+		do Memory.poke(memAddress+1056, -128);
+		do Memory.poke(memAddress+1088, 16256);
+		do Memory.poke(memAddress+1120, -64);
+		do Memory.poke(memAddress+1152, -64);
+		do Memory.poke(memAddress+1184, -64);
+		do Memory.poke(memAddress+1216, -64);
+		do Memory.poke(memAddress+1248, -64);
+		do Memory.poke(memAddress+1280, -80);
+		do Memory.poke(memAddress+1312, -40);
+		do Memory.poke(memAddress+1344, 32728);
+		do Memory.poke(memAddress+1376, -8264);
+		do Memory.poke(memAddress+1408, -8264);
+		do Memory.poke(memAddress+1440, 16240);
+		do Memory.poke(memAddress+1472, 0);
+		do Memory.poke(memAddress+1504, 0);
+
+		do Memory.poke(memAddress+1, 0);
+		do Memory.poke(memAddress+33, 0);
+		do Memory.poke(memAddress+65, 0);
+		do Memory.poke(memAddress+97, 0);
+		do Memory.poke(memAddress+129, 0);
+		do Memory.poke(memAddress+161, 0);
+		do Memory.poke(memAddress+193, 0);
+		do Memory.poke(memAddress+225, 0);
+		do Memory.poke(memAddress+257, 0);
+		do Memory.poke(memAddress+289, 0);
+		do Memory.poke(memAddress+321, 1);
+		do Memory.poke(memAddress+353, 3);
+		do Memory.poke(memAddress+385, 3);
+		do Memory.poke(memAddress+417, 7);
+		do Memory.poke(memAddress+449, 127);
+		do Memory.poke(memAddress+481, 254);
+
+		do Memory.poke(memAddress+513, 1023);
+		do Memory.poke(memAddress+545, 2047);
+		do Memory.poke(memAddress+577, 1950);
+		do Memory.poke(memAddress+609, 3999);
+		do Memory.poke(memAddress+641, 4095);
+		do Memory.poke(memAddress+673, 4095);
+		do Memory.poke(memAddress+705, 2047);
+		do Memory.poke(memAddress+737, 1023);
+		do Memory.poke(memAddress+769, 510);
+		do Memory.poke(memAddress+801, 253);
+		do Memory.poke(memAddress+833, 455);
+		do Memory.poke(memAddress+865, 1023);
+		do Memory.poke(memAddress+897, 1023);
+		do Memory.poke(memAddress+929, 2047);
+		do Memory.poke(memAddress+961, 2047);
+		do Memory.poke(memAddress+993, 2047);
+
+		do Memory.poke(memAddress+1025, 2047);
+		do Memory.poke(memAddress+1057, 2047);
+		do Memory.poke(memAddress+1089, 2047);
+		do Memory.poke(memAddress+1121, 2046);
+		do Memory.poke(memAddress+1153, 1022);
+		do Memory.poke(memAddress+1185, 1022);
+		do Memory.poke(memAddress+1217, 445);
+		do Memory.poke(memAddress+1249, 445);
+		do Memory.poke(memAddress+1281, 477);
+		do Memory.poke(memAddress+1313, 894);
+		do Memory.poke(memAddress+1345, 2047);
+		do Memory.poke(memAddress+1377, 1981);
+		do Memory.poke(memAddress+1409, 1981);
+		do Memory.poke(memAddress+1441, 120);
+		do Memory.poke(memAddress+1473, 0);
+		do Memory.poke(memAddress+1505, 0);
+
+		return;
+	}
+	function void drawBend(int location){
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress+32, 0);
+		do Memory.poke(memAddress+64, 0);
+		do Memory.poke(memAddress+96, 0);
+		do Memory.poke(memAddress+128, 0);
+		do Memory.poke(memAddress+160, 0);
+		do Memory.poke(memAddress+192, 0);
+		do Memory.poke(memAddress+224, 0);
+		do Memory.poke(memAddress+256, 0);
+		do Memory.poke(memAddress+288, 0);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, -4096);
+		do Memory.poke(memAddress+480, -256);
+
+		do Memory.poke(memAddress+512, -256);
+		do Memory.poke(memAddress+544, -64);
+		do Memory.poke(memAddress+576, -64);
+		do Memory.poke(memAddress+608, -24640);
+		do Memory.poke(memAddress+640, 32736);
+		do Memory.poke(memAddress+672, 32736);
+		do Memory.poke(memAddress+704, 32736);
+		do Memory.poke(memAddress+736, -32);
+		do Memory.poke(memAddress+768, -32);
+		do Memory.poke(memAddress+800, -40);
+		do Memory.poke(memAddress+832, 32748);
+		do Memory.poke(memAddress+864, -16404);
+		do Memory.poke(memAddress+896, -4132);
+		do Memory.poke(memAddress+928, -4132);
+		do Memory.poke(memAddress+960, 8120);
+		do Memory.poke(memAddress+992, 0);
+
+		do Memory.poke(memAddress+1, -1024);
+		do Memory.poke(memAddress+33, -512);
+		do Memory.poke(memAddress+65, -256);
+		do Memory.poke(memAddress+97, -32000);
+		do Memory.poke(memAddress+129, -32000);
+		do Memory.poke(memAddress+161, 32512);
+		do Memory.poke(memAddress+193, -128);
+		do Memory.poke(memAddress+225, -15936);
+		do Memory.poke(memAddress+257, -32320);
+		do Memory.poke(memAddress+289, 896);
+		do Memory.poke(memAddress+321, -128);
+		do Memory.poke(memAddress+353, -256);
+		do Memory.poke(memAddress+385, -2048);
+		do Memory.poke(memAddress+417, -64);
+		do Memory.poke(memAddress+449, -1);
+		do Memory.poke(memAddress+481, -1);
+
+		do Memory.poke(memAddress+513, -1);
+		do Memory.poke(memAddress+545, -1);
+		do Memory.poke(memAddress+577, -1);
+		do Memory.poke(memAddress+609, -1);
+		do Memory.poke(memAddress+641, -1);
+		do Memory.poke(memAddress+673, -1);
+		do Memory.poke(memAddress+705, -1);
+		do Memory.poke(memAddress+737, -8194);
+		do Memory.poke(memAddress+769, -8194);
+		do Memory.poke(memAddress+801, -4098);
+		do Memory.poke(memAddress+833, -16385);
+		do Memory.poke(memAddress+865, -1);
+		do Memory.poke(memAddress+897, -8194);
+		do Memory.poke(memAddress+929, -8258);
+		do Memory.poke(memAddress+961, 16320);
+		do Memory.poke(memAddress+993, 0);
+
+		do Memory.poke(memAddress+2, 0);
+		do Memory.poke(memAddress+34, 1);
+		do Memory.poke(memAddress+66, 3);
+		do Memory.poke(memAddress+98, 7);
+		do Memory.poke(memAddress+130, 7);
+		do Memory.poke(memAddress+162, 15);
+		do Memory.poke(memAddress+194, 14);
+		do Memory.poke(memAddress+226, 253);
+		do Memory.poke(memAddress+258, 1023);
+		do Memory.poke(memAddress+290, 2046);
+		do Memory.poke(memAddress+322, 2045);
+		do Memory.poke(memAddress+354, 1855);
+		do Memory.poke(memAddress+386, 3902);
+		do Memory.poke(memAddress+418, 4095);
+		do Memory.poke(memAddress+450, 4095);
+		do Memory.poke(memAddress+482, 2047);
+
+		do Memory.poke(memAddress+514, 1023);
+		do Memory.poke(memAddress+546, 511);
+		do Memory.poke(memAddress+578, 255);
+		do Memory.poke(memAddress+610, 7);
+		do Memory.poke(memAddress+642, 3);
+		do Memory.poke(memAddress+674, 1);
+		do Memory.poke(memAddress+706, 1);
+		do Memory.poke(memAddress+738, 0);
+		do Memory.poke(memAddress+770, 0);
+		do Memory.poke(memAddress+802, 0);
+		do Memory.poke(memAddress+834, 1);
+		do Memory.poke(memAddress+866, 3);
+		do Memory.poke(memAddress+898, 3);
+		do Memory.poke(memAddress+930, 3);
+		do Memory.poke(memAddress+962, 0);
+		do Memory.poke(memAddress+994, 0);
+
+		return;
+	}
+
+
+}

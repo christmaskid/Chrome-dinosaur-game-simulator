@@ -1,0 +1,54 @@
+// Author: Yu Tong Cheng, Chen Wei Su
+// Updated date: 01/17/2021
+
+class heartbeat
+{
+	field int heartnum;
+	field int x,y;
+	field int temp;
+	constructor heartbeat new(){
+		let heartnum=5;
+		let x=24;
+		let y=0;
+		return this;
+	}
+	method void draw()
+	{
+		let temp=heartnum;
+		while(temp>0)
+		{
+			do Heart.draw(x+temp);
+			let temp=temp-1;
+		}
+		return;
+	}
+	
+	method void lose()
+	{
+		do erase();
+		do Sys.wait(20);
+		do draw();
+		do Sys.wait(20);
+		do erase();
+		let heartnum=heartnum-1;
+		do draw();
+		return;
+	}
+
+	method void erase()
+	{
+		do Screen.setColor(false);
+		do Screen.drawRectangle(400,0,480,16);
+		return;
+	}
+
+	method boolean die(){
+		return (heartnum=0);
+	}
+
+	method void dispose()
+	{
+		do Memory.deAlloc(this);
+		return;
+	}
+}

@@ -1,0 +1,114 @@
+// Author: Yu Tong Cheng
+// Updated date: 01/17/2021
+/* Obstacles */
+class Obstacle {
+	field int x,y;
+	field int height,width;
+	field int speed;
+	field int type;
+
+	constructor Obstacle new(){
+		let type=1;
+		do setData();
+		let speed=2;
+		do draw();
+		return this;
+	}
+
+	method void setData()
+	{
+		let type=type+1;
+		if(type>3) {let type=type-3;}
+
+		if(type=1) { // cactus
+			let height=48;
+			let width=32;
+			let x=470;
+			let y=200-height;
+		}
+		if(type=2) { // low bird
+			let height=16;
+			let width=32;
+			let x=470;
+			let y=145;
+		}
+		if(type=3) { // high bird
+			let height=64;
+			let width=32;
+			let x=470;
+			let y=100;
+		}
+		return;
+	}
+
+	method void draw(){
+		if(type=1) {do Cactus.draw((x/16)+(y*32));}
+		if(type=2) {do Pterosaur.draw((x/16)+(y*32));}
+		if(type=3) {do Eagle.draw((x/16)+(y*32));}
+		return;
+	}
+
+	method void erase(){
+		do Screen.setColor(false);
+		do Screen.drawRectangle(x,y,x+width,y+height);
+		return;
+	}
+
+	method void move(){
+		if(x>speed){
+			do erase();
+			let x=x-speed;
+			do draw();
+		}
+		else  // reach the left border of screen
+		{
+			do erase();
+			do generate();
+		}
+		return;
+	}
+
+	method void generate(){
+		do erase();
+		do setData();
+		let x=511-width;
+		if(Game.showLevel()) {let speed=speed+1;}
+		do draw();
+		return;
+	}
+
+	method int leftBoundary(){
+		return x;
+	}
+
+	method int rightBoundary(){
+		return x+width;
+	}
+
+	method int top(){
+		return y;
+	}
+
+	method int bottom(){
+		return y+height-5;
+	}
+
+	method boolean touchVer(int n){
+		return (((n>y) | (n=y)) & ( (n<(y+height)) | (n=(y+height)) ) );
+	}
+
+	method boolean touchHor(int n){
+		return (((n>x) | (n=x)) & ( (n<(x+width)) | (n=(x+width)) ) );
+	}
+
+	method void incSpeed(){
+		let speed=speed+1;
+		return;
+	}
+
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+
+}

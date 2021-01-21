@@ -1,0 +1,199 @@
+// Author: Yu Tong Cheng, Chen Wei Su
+// Updated date: 01/17/2021
+/* The game */
+
+class Game{
+	field Character character;
+	field Obstacle obstacle;
+	field heartbeat hb;
+	field int direction;
+	field boolean exit;
+	field char key;
+	field int time;
+	field int jTime;
+	field boolean hasTouch;
+	field int seed;
+	static int level;
+	static int flr;
+
+	constructor Game new(int sel){
+		let flr=200;
+		do reset(sel);
+		return this;
+	}
+
+	/* new game */
+	method void reset(int sel){
+		let character=Character.new(sel); 
+		let obstacle=Obstacle.new();
+		let hb=heartbeat.new();
+		let hasTouch=false;
+		let direction=0;
+		let time=0;
+		let jTime=0;
+		let level=1;
+		let seed=1;
+		return;
+	}
+
+	/* movement of character */
+	method void moveCharacter(){
+		if (direction=1) {do character.moveUp();}
+		if (direction=2) {do character.moveDown();}
+		if (direction=3) {do character.bendDown();}
+		if (direction=4) {do character.standUp();}
+		do Sys.wait(5);
+		return;
+	}
+
+	/* detection of whether the character and obstacle are collided */
+	method boolean touch(Character c,Obstacle o){
+		if ( (o.touchHor(c.leftBoundary()) | o.touchHor(c.rightBoundary())) 
+			& (o.touchVer(c.top()) | o.touchVer(c.bottom())) & ~hasTouch)
+		{
+			let hasTouch=true;
+			do hb.lose();
+
+			if(~(hb.die())) 
+			{
+				do obstacle.erase();
+				do Screen.setColor(false);
+				do Screen.drawRectangle(0,50,70,199);
+				do obstacle.generate();
+				do character.draw();
+			}
+
+			return true;
+		}
+		else {
+			let hasTouch=false;
+			return false;
+		}
+	}
+
+	/* game over scene */
+	method void gameOver(){
+		do Output.moveCursor(10,27); // screen: 23 line * 64 char
+		do Output.printString("GAME OVER");
+		do Output.moveCursor(11,28);
+		do Output.printString("Score:");
+		do Output.printInt(time);
+		return;
+	}
+
+	/* return the score */
+	method int score(){
+		return time;
+	}
+
+	/* play the game again */
+	method boolean again(){
+		let key=Keyboard.keyPressed();
+		while(~(key=0)) {
+			let key=Keyboard.keyPressed();
+		}
+		do Output.moveCursor(12,20);
+		do Output.printString("Play again? (Y/N):");
+		while(true){
+			let key=Keyboard.keyPressed();
+			if(key=89) {return true;} // Y
+			if(key=78) {return false;} // N
+		}
+		return false;
+	}
+
+	/* show level */
+	function boolean showLevel(){
+		do Output.moveCursor(1,7);
+		do Output.printInt(level);
+		let level=level+1;
+		if((level=5) | (level=10) | (level=20)) {
+			return true;
+		}
+		return false;
+	}
+
+	/* increase time */
+	method void incTime(){
+		let time=time+1;
+		do Output.moveCursor(2,6);
+		do Output.printInt(time);
+		return;
+	}
+
+	/* update */
+	method void routine(boolean p){ // pressed
+		var int bottom;
+		do incTime();
+		do floor.move();
+		do obstacle.move();
+		let bottom=character.bottom();
+
+		/* keyboard operation */
+		if(p){
+			if(key=131) // go up
+			{
+				if(jTime<150){
+					let jTime=jTime+1;
+					let direction=1;
+				}
+				else {let direction=2;}
+			} 
+			if((key=133) & (bottom=flr)) {let direction=3;} // bend down
+		}
+		else{
+			let jTime=0;
+			if(bottom<flr) {let direction=2;} // in the air: falling down
+			if(bottom=flr) {let direction=4;} // stand up
+		}
+		do moveCharacter();
+
+		/* collision detection */
+		if (touch(character,obstacle)) {
+			if(hb.die()) {let exit=true;}
+		}
+
+		return;
+	}
+
+
+	/* main game */
+	method void run (){
+		do Output.moveCursor(1,1);
+		do Output.printString("Level:0");
+		do Output.moveCursor(2,1);
+		do Output.printString("Time:0");
+
+		do Screen.setColor(true);
+		do floor.generate(flr);
+		do hb.draw();
+
+		let exit=false;
+		while (~exit){
+			let key=Keyboard.keyPressed();
+			do routine(~(key=0));
+		}
+		do character.draw();
+		do gameOver();
+		return;
+	}
+
+	/* ending picture */
+	method void end(int top){
+		do Screen.clearScreen();
+		do Output.moveCursor(11,25);
+		do Output.printString("Top score:");
+		do Output.printInt(top);
+		do Output.moveCursor(12,20);
+		do Output.printString("Thank you!! Bye Bye~");
+		while(key=0) {
+			let key=Keyboard.keyPressed();
+		}
+		return;
+	}
+
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+}

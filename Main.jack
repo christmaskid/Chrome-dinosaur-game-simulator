@@ -1,0 +1,29 @@
+// Author: Yu Tong Cheng, Chen Wei Su
+// Updated date: 01/17/2021
+class Main{
+	function void main(){
+		var Game game;
+		var int sel;
+		var int topScore;
+
+		do Menu.start();
+		let sel = Menu.select();
+		let game=Game.new(sel);
+		do game.run();
+		let topScore=game.score();
+
+		while(game.again()){
+			do Screen.clearScreen();
+			do game.reset(sel);
+			do game.run();
+			if((game.score()>topScore)|(game.score()=topScore))
+			{
+				let topScore=game.score();
+			}
+		}
+		
+		do game.end(topScore);
+		do game.dispose();
+		return;
+	}
+}

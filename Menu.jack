@@ -1,0 +1,85 @@
+// Author: Yu Tong Cheng, Chen Wei Su
+// Updated date: 01/17/2021
+class Menu
+{
+	static int type;
+	static boolean exit;
+	function void start()
+	{
+		let exit=false;
+		do Output.moveCursor(6,26);
+		do Output.printString("T-Rex RUSH");
+		do Dinosaur.draw(100*32+14);
+		do Output.moveCursor(15,20);
+		do Output.printString("Press Enter to start!");
+		while(~exit) {if(Keyboard.keyPressed()=128) {let exit=true;}}
+		do Screen.clearScreen();
+		return;
+	}
+	function int select()
+	{
+		var int key;
+		var boolean release;
+		let type=1;
+		let exit=false;
+
+		do Output.moveCursor(6,16);
+		do Output.printString(" [1]         [2]         [3]");
+		do Dinosaur.draw(80*32+8);
+		do Kangaroo.draw(80*32+14);
+		do Rabbit.draw(80*32+20);
+		do Menu.drawArrow();
+
+		do Output.moveCursor(15,10);
+		do Output.printString("Press left or right to select your character: [");
+		do Output.printInt(type);
+		do Output.printString("]");
+		do Output.moveCursor(16,15);
+		do Output.printString("Press down to start the game");
+
+		while(~exit)
+		{
+			while(key=0){
+				let key=Keyboard.keyPressed();
+			}
+
+			if(key=130) {
+				let type=type-1; 
+				do Menu.erase(); 
+				do Menu.drawArrow();
+			}
+			if(key=132) {
+				let type=type+1; 
+				do Menu.erase(); 
+				do Menu.drawArrow();
+			}
+			if(key=133) {let exit=true;}
+
+			if(type>3) {let type=3;}
+			if(type<1) {let type=1;}
+
+			while(~(key=0)){
+				let key=Keyboard.keyPressed();
+			}
+
+			do Output.moveCursor(15,57);
+			do Output.printInt(type);
+		}
+		do Screen.clearScreen();
+		return type;
+	}
+	function void drawArrow()
+	{
+		do Screen.setColor(true);
+		if(type=1) {do Screen.drawRectangle(140,140,145,145);}
+		if(type=2) {do Screen.drawRectangle(235,140,240,145);}
+		if(type=3) {do Screen.drawRectangle(330,140,335,145);}
+		return;
+	}
+	function void erase()
+	{
+		do Screen.setColor(false);
+		do Screen.drawRectangle(1,140,500,145);
+		return;
+	}
+}

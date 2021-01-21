@@ -1,0 +1,115 @@
+// Author: Yu Tong Cheng
+// Updated date: 01/17/2021
+/* The chararcter */
+
+class Character{
+	field int x,y;
+	field int width,height;
+	field boolean bent;
+	field int type;
+
+	constructor Character new(int sel){
+		let bent = false;
+		let type=sel;
+		do setData();
+		do draw();
+		return this;
+	}
+
+	method void setData()
+	{
+		let height = 48;
+		let width = 32;
+		let x=32;
+		let y=200-height;
+		return;
+	}
+
+	method void draw(){
+		if(type=1){
+			if(bent) {do Dinosaur.drawBend((x/16)+(y*32));}
+			else {do Dinosaur.draw((x/16)+(y*32));}
+		}
+		if(type=2){
+			if(bent) {do Kangaroo.drawBend((x/16)+(y*32));}
+			else {do Kangaroo.draw((x/16)+(y*32));}
+		}
+		if(type=3){
+			if(bent) {do Rabbit.drawBend((x/16)+(y*32));}
+			else {do Rabbit.draw((x/16)+(y*32));}
+		}
+		return;
+	}
+
+	method void erase(){
+		do Screen.setColor(false);
+		do Screen.drawRectangle(x,y,x+width,y+height);
+		return;
+	}
+
+	method void moveUp(){
+		if(y>60){
+			do erase();
+			let y=y-2;
+			do draw();
+		}
+		return;
+	}
+
+	method void moveDown(){
+		if(y+height<200)
+		{
+			do erase();
+			let y=y+2;
+			do draw();
+		}
+		return;
+	}
+
+	method void bendDown(){
+		if(~bent){
+			let bent = true;
+			do erase();
+			let height=32;
+			let y=y+16;
+			let width=48;
+			do draw();
+		}
+		return;
+	}
+
+	method void standUp(){
+		if(bent){
+			let bent = false;
+			do erase();
+			let height=48;
+			let y=y-16;
+			let width=32;
+			do draw();
+		}
+		return;
+	}
+
+	method int leftBoundary(){
+		return x;
+	}
+
+	method int rightBoundary(){
+		return x+width;
+	}
+
+	method int bottom(){
+		return y+height;
+	}
+
+	method int top(){
+		return y;
+	}
+
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+
+
+}
